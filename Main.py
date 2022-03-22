@@ -61,5 +61,5 @@ app = Flask(__name__)
 @app.route('/checkCard', methods=['GET', 'POST'])
 def reCard():
     checked = getCard(request.args.get('card'))
-    return Response(dumps(checked, indent=4, ensure_ascii=False), status=200 if checked['status'] else 400)
+    return Response(dumps(checked, ensure_ascii=False), status=200 if checked['status'] else 400)
 app.run(IP, 80, debug=False)
