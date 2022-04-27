@@ -3,4 +3,4 @@
 
 pip install flask requests
 
-type(return): json
+typeOf(returnedValue): json
