@@ -5,7 +5,7 @@ from socket import gethostbyname, gethostname; IP = gethostbyname(gethostname())
 from flask import Flask, request, Response
 from logging import getLogger, ERROR; getLogger('werkzeug').setLevel(ERROR)
 r, g, y, w ='\033[1;31m', '\033[32;1m', '\033[1;33m', '\033[1;37m'
-faList = [' ', 'ح' ,'چ' ,'ج' ,'ث' ,'ت' ,'پ' ,'ب' ,'ا' ,'ش' ,'س' ,'ژ' ,'ز' ,'ر' ,'ذ' ,'د' ,'خ' ,'ق' ,'ف' ,'غ' ,'ع' ,'ظ' ,'ط' ,'ض' ,'ص' ,'ی' ,'ه' ,'و' ,'ن' ,'م' ,'ل' ,'گ' ,'ک']
+faList = [' ', 'ح' ,'چ' ,'ج' ,'ث' ,'ت' ,'پ' ,'ب' ,'ا' ,'ش' ,'س' ,'ژ' ,'ز' ,'ر' ,'ذ' ,'د' ,'خ' ,'ق' ,'ف' ,'غ' ,'ع' ,'ظ' ,'ط' ,'ض' ,'ص' ,'ی' ,'ه' ,'و' ,'ن' ,'م' ,'ل' ,'گ' ,'ک', 'آ', 'ة', 'ي']
 banks = {
     '627412': 'بانک اقتصاد نوین',
     '207177': 'بانک توسعه صادرات ایران',
