@@ -1,6 +1,4 @@
 # Get-Card-Info
-♻️ modules: flask requests
-
-pip install flask requests
-
-typeOf(returnedValue): json
+♻️ modules: (flask, requests)
+♻️ Command: pip install flask requests
+♻️ typeOf(Result) -> json
