@@ -5,7 +5,7 @@ Command ```pip install flask requests```
 
 for get result
 ```
-request to ex.com/checkCard?card=card_number [ get, post ]
+request to ex.com/check_card?card=card_number [ get, post ]
 
 Returns:
   Json: (holder, bankName)
