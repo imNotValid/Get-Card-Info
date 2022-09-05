@@ -1,5 +1,5 @@
 # Get-Card-Info
-Modules used ```flask, requests```
+used modules ```flask, requests```
 
 Command ```pip install flask requests```
 
