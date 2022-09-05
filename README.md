@@ -1,9 +1,14 @@
 # Get-Card-Info
-modules: (flask, requests)
-Command: ```pip install flask requests```
+Modules used
+```flask, requests```
 
-request -> ex.com/checkCard?card=2345678987654
+Command
+```pip install flask requests```
+
+for get result
+```
+ex.com/checkCard?card=card_number
 
 Returns:
   Json: (holder, bankName)
-  
+```
