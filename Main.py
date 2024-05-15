@@ -5,7 +5,7 @@ from socket import gethostbyname, gethostname; IP = gethostbyname(gethostname())
 from flask import Flask, request, Response
 from logging import getLogger, ERROR; getLogger('werkzeug').setLevel(ERROR)
 
-faList = [' ', 'ح' ,'چ' ,'ج' ,'ث' ,'ت' ,'پ' ,'ب' ,'ا' ,'ش' ,'س' ,'ژ' ,'ز' ,'ر' ,'ذ' ,'د' ,'خ' ,'ق' ,'ف' ,'غ' ,'ع' ,'ظ' ,'ط' ,'ض' ,'ص' ,'ی' ,'ه' ,'و' ,'ن' ,'م' ,'ل' ,'گ' ,'ک', 'آ', 'ة', 'ي']
+fa_list = [' ', 'ح' ,'چ' ,'ج' ,'ث' ,'ت' ,'پ' ,'ب' ,'ا' ,'ش' ,'س' ,'ژ' ,'ز' ,'ر' ,'ذ' ,'د' ,'خ' ,'ق' ,'ف' ,'غ' ,'ع' ,'ظ' ,'ط' ,'ض' ,'ص' ,'ی' ,'ه' ,'و' ,'ن' ,'م' ,'ل' ,'گ' ,'ک', 'آ', 'ة', 'ي']
 banks = {
     '627412': 'بانک اقتصاد نوین',
     '207177': 'بانک توسعه صادرات ایران',
@@ -51,20 +51,20 @@ banks = {
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.109 Safari/537.36 OPR/84.0.4316.42',}
 url = 'https://estelam.net/checkSheba'
 
-def isCard(card): return True if match(r"\d{16}", card) else False
+def is_card(card): return True if match(r"\d{16}", card) else False
 
-def getCard(card):
-    if isCard(card):
-        startCard = card[0:6]
+def get_card(card):
+    if is_card(card):
+        start_card = card[0:6]
         res = post(url, {'card': card}, headers=headers).text
-        return {'status': True, 'card': card, 'holder': "".join(x for x in list(filter(lambda x: x in faList, res.split('|')[-1]))), 'bankName': banks[startCard] if startCard in banks else None, 'coder': '@imNotValid'} if findall(r"[\d\w]{24}", res) else {'status': False, 'card': card}
+        return {'status': True, 'card': card, 'holder': "".join(x for x in list(filter(lambda x: x in fa_list, res.split('|')[-1]))), 'bankName': banks[start_card] if start_card in banks else None, 'coder': '@imNotValid'} if findall(r"[\d\w]{24}", res) else {'status': False, 'card': card}
     else: return {'status': False}
 
 app = Flask(__name__)
 
-@app.route('/check_card', methods=['GET', 'POST'])
-def reCard():
-    checked = getCard(request.args.get('card'))
+@app.route('/checkcard', methods=['GET', 'POST'])
+def card_api():
+    checked = get_card(request.args.get('card'))
     return Response(dumps(checked, ensure_ascii=False), status=200 if checked['status'] else 400)
 
 app.run(IP, 80, debug=False)
